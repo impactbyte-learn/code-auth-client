@@ -1,4 +1,12 @@
 ;(function() {
+  const request = axios.create({
+    baseURL: 'http://localhost:3000',
+    timeout: 1000,
+    headers: {
+      Authorization: `Bearer token`
+    }
+  })
+
   // ---------------------------------------------------------------------------
 
   const registerForm = $('#register-form')
@@ -12,10 +20,20 @@
   // ---------------------------------------------------------------------------
 
   const register = () => {
-    const email = registerEmail.val()
-    const password = registerPassword.val()
+    const data = {
+      email: registerEmail.val(),
+      password: registerPassword.val()
+    }
 
-    console.log('register', email, password)
+    request
+      .post('/users/register', data)
+      .then(response => {
+        swal('Register success!', response.data.message, 'success')
+      })
+      .catch(error => {
+        console.log(error)
+        swal('Register failed!', 'User is already exist', 'error')
+      })
   }
 
   const login = () => {
