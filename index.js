@@ -37,10 +37,24 @@
   }
 
   const login = () => {
-    const email = loginEmail.val()
-    const password = loginPassword.val()
+    const data = {
+      email: registerEmail.val(),
+      password: registerPassword.val()
+    }
 
-    console.log('login:', email, password)
+    request
+      .post('/users/login', data)
+      .then(response => {
+        swal('Login success!', response.data.message, 'success')
+      })
+      .catch(error => {
+        console.log(error)
+        swal(
+          'Login failed!',
+          'User is not exist or password is mismatch',
+          'error'
+        )
+      })
   }
 
   // ---------------------------------------------------------------------------
