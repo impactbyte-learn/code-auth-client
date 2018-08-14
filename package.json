@@ -1,0 +1,18 @@
+{
+  "name": "code-auth-client",
+  "version": "0.1.0",
+  "description": "Code Auth Client",
+  "main": "index.js",
+  "repository": "git@github.com:impactbyte-learn/code-auth-client.git",
+  "author": "M Haidar Hanif <git@mhaidarhanif.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "http-server",
+    "dev": "live-server"
+  },
+  "devDependencies": {
+    "http-server": "0.11.1",
+    "live-server": "1.2.0"
+  }
+}
