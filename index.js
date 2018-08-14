@@ -19,6 +19,16 @@
 
   // ---------------------------------------------------------------------------
 
+  const getToken = () => {
+    return localStorage.getItem('token')
+  }
+
+  const setToken = token => {
+    localStorage.setItem('token', token)
+  }
+
+  // ---------------------------------------------------------------------------
+
   const register = () => {
     const data = {
       email: registerEmail.val(),
@@ -31,7 +41,6 @@
         swal('Register success!', response.data.message, 'success')
       })
       .catch(error => {
-        console.log(error)
         swal('Register failed!', 'User is already exist', 'error')
       })
   }
@@ -46,9 +55,9 @@
       .post('/users/login', data)
       .then(response => {
         swal('Login success!', response.data.message, 'success')
+        setToken(response.data.token)
       })
       .catch(error => {
-        console.log(error)
         swal(
           'Login failed!',
           'User is not exist or password is mismatch',
