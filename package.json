@@ -10,8 +10,7 @@
   "scripts": {
     "start": "http-server",
     "dev": "live-server",
-    "ls": "ls",
-    "tree": "tree bower_components -L 1"
+    "ls": "ls"
   },
   "devDependencies": {
     "http-server": "0.11.1",
